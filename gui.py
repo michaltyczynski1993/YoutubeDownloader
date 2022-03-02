@@ -1,6 +1,5 @@
 from tkinter import *
 import tkinter as tk
-from turtle import color
 import ytdownloader as yt
 
 class YtDownloaderGui(Frame):
