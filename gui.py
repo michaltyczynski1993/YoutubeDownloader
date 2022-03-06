@@ -28,11 +28,12 @@ class YtDownloaderGui(Frame):
         self.playlist_lbl = Label(self.playlist_frame, text='Enter PlayList URL')
         self.playlist_entry = Entry(self.playlist_frame)
         self.playlist_download_bttn = Button(self.playlist_frame, text='Download all videos')
-        self.complete_playlist_text = Label(self.stream_frame, text='', fg='#11AD00')
+        self.playlist_download_bttn['command'] = self.download_video_playlist
+        self.complete_playlist_text = Label(self.playlist_frame, text='', fg='#11AD00')
         self.playlist_audio_download = Button(self.playlist_frame, text='Download all audio')
+        self.playlist_audio_download['command'] = self.download_audio_playlist
         
         # widgets positioning
-        
         # stream frame
         self.stream_frame.pack(ipadx=20, ipady=20, fill='both', side='left', expand=True)
         self.playlist_frame.pack(ipadx=20, ipady=20, fill='both', side='left', expand=True)
@@ -65,6 +66,21 @@ class YtDownloaderGui(Frame):
         yt.download_mp3(url)
         self.complete_stream_text['text'] = 'Download complete! Check Your folder.'
 
+    def download_video_playlist(self):
+        url = self.playlist_entry.get()
+        if url == '':
+            self.complete_playlist_text['fg'] = '#BF271F'
+            self.complete_playlist_text['text'] = 'Enter Playlist URL to download videos from YouTube.'
+        yt.playlist_video_download(url)
+        self.complete_playlist_text['text'] = 'Download complete! Check Your folder.'
+    
+    def download_audio_playlist(self):
+        url = self.playlist_entry.get()
+        if url == '':
+            self.complete_playlist_text['fg'] = '#BF271F'
+            self.complete_playlist_text['text'] = 'Enter Playlist URL to download audio from YouTube.'
+        yt.playlist_mp3_download(url)
+        self.complete_playlist_text['text'] = 'Download complete! Check Your folder.'
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
