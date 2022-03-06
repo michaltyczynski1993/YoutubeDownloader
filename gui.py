@@ -85,7 +85,7 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title('Youtube downloader')
-        self.geometry('400x200')
+        self.geometry('700x200')
 
 
 if __name__ == "__main__":
