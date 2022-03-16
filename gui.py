@@ -1,7 +1,6 @@
 from cgitb import text
 from tkinter import *
 import tkinter as tk
-from turtle import left
 import ytdownloader as yt
 
 class YtDownloaderGui(Frame):
