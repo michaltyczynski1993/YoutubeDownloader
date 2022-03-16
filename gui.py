@@ -1,4 +1,3 @@
-from cgitb import text
 from tkinter import *
 import tkinter as tk
 import ytdownloader as yt
